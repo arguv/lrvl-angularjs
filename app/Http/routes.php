@@ -11,7 +11,7 @@
 |
 */
 
-/*Route::get('/', function () {
+/*Route::get('/home', function () {
     return view('welcome');
 });*/
 
@@ -19,8 +19,14 @@ Route::get('/','IndexController@index');
 
 Route::auth();
 
-Route::group(['middleware'=>'auth'], function()
-{
-    Route::resource('home', 'HomeController');
+Route::group(['middleware'=>'auth'], function(){
+
+    Route::get('/home', function () {
+        return view('users.articles.articles');
+    });
+
+    Route::resource('posts', 'PostsController',
+        ['only' => ['index','store','update','destroy']]
+    );
 
 });
