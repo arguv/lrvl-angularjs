@@ -23,6 +23,16 @@
 		.fa-btn {
 			margin-right: 6px;
 		}
+		#txtcontent {
+			width: 100%;
+		}
+		.hr{
+			margin-top: 10%;
+			margin-bottom: 2%;
+			padding: 1px;
+			background-color: #9d9d9d;
+		}
+
 	</style>
 </head>
 <body id="app-layout">
@@ -81,6 +91,7 @@
 
 	<!-- load angular -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-resource.js"></script>
 
 	<script src="public/js/controllers/mainCtrl.js"></script>
 	<script src="public/js/services/commentService.js"></script>

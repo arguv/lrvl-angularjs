@@ -24,8 +24,9 @@ angular.module('commentService', [])
 			},
 
 			// edit a post
-			edit : function(id) {
-				return $http.put('/posts/' + id);
+			edit : function(id, comment) {
+
+				return $http.put('/posts/' + id, comment);
 			}
 
 		}

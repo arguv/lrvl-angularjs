@@ -28,7 +28,7 @@ class PostsController extends Controller
 	 */
 	public function index()
 	{
-		$all_articles = Post::where('user_id', Auth::id())->get();
+		$all_articles = Post::where('user_id', Auth::id())->orderBy('id', 'desc')->get();
 
 		return response()->json($all_articles);
 	}
@@ -47,7 +47,7 @@ class PostsController extends Controller
 			'user_id' => Auth::id(),
 		));
 
-		return response()->json(array('success'=>true, 'message'=>'Post Added' ));
+		return response()->json(array('success'=>true, 'message'=>'Post Added'));
 	}
 
 	/**
@@ -57,12 +57,14 @@ class PostsController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, $id)
+	public function update($id, Request $request)
 	{
 		$article = Post::find($id);
-		$article->update( $request->all() );
+		$article->title = $request->input('title');
+		$article->content = $request->input('content');
+		$article->update();
 
-		return response()->json(array('success'=> true, 'message'=>'Post Edited'));
+		return response()->json(array('success'=> $article, 'message'=>'Post Edited'));
 	}
 
 	/**
